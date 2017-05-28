@@ -1,0 +1,34 @@
+package io.shesh.tracker.utils;
+
+/**
+ * Created by shesh on 5/28/17.
+ */
+public enum AlertMsgType {
+    //Alerts for tyres - Low and High Pressure
+    LOW_PRESSURE_LEFT_TYRE_ALERT("LEFT TYRE CHECK  : LOW PRESSURE"),
+    LOW_PRESSURE_RIGHT_TYRE_ALERT("RIGHT TYRE CHECK  : LOW PRESSURE"),
+    LOW_PRESSURE_FRONT_TYRE_ALERT("FRONT TYRE CHECK  : LOW PRESSURE"),
+    LOW_PRESSURE_BACK_TYRE_ALERT("BACK TYRE TYRE CHECK  : LOW PRESSURE"),
+    HIGH_PRESSURE_LEFT_TYRE_ALERT("LEFT TYRE CHECK  : HIGH PRESSURE"),
+    HIGH_PRESSURE_RIGHT_TYRE_ALERT("RIGHT TYRE CHECK  : HIGH PRESSURE"),
+    HIGH_PRESSURE_FRONT_TYRE_ALERT("FRONT TYRE CHECK  : HIGH PRESSURE"),
+    HIGH_PRESSURE_BACK_TYRE_ALERT("BACK TYRE CHECK  : HIGH PRESSURE"),
+
+
+    //alert on Engine
+    HIGH_REDLINERPM_ALERT("RPM ALERT CHECK ABOVE RED-LINE: HIGH"),
+    LOW_COOLANT_ALERT("COOLANT IS LOW : LOW"),
+    LOW_FUEL_ALERT("FUEL IS BELOW 10% : MEDIUM"),
+    CHECK_ENGINE_LIGHT("CHECK ENGINE LIGHT IS ON : LOW");
+
+
+    private String alertMsg;
+
+    AlertMsgType(String alertMsg) {
+        this.alertMsg = alertMsg;
+    }
+
+    public String getAlertMsg() {
+        return alertMsg;
+    }
+}
