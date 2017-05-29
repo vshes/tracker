@@ -18,7 +18,7 @@ public class AppWebInit extends AbstractAnnotationConfigDispatcherServletInitial
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/api/*"};
+        return new String[]{"/tracker/api/*"};
     }
 }
 
