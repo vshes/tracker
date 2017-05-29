@@ -1,17 +1,24 @@
 package io.shesh.tracker.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
  * Created by shesh on 5/28/17.
  */
+@Entity
 public class Readings {
 
+    @Id
     private String rid;
     private String vin;
     private double latitude;
     private double longitude;
+
     private Timestamp timestamp;
     private float fuelVolume;
     private float  speed;

@@ -8,10 +8,11 @@ import java.util.List;
 
 public interface VehicleDao {
 
-     Vehicle findById();
+     Vehicle findById(String id);
      List<Vehicle> findAll();
      Vehicle create(Vehicle vehicle);
      Vehicle update(Vehicle vehicle);
-     Vehicle delete(Vehicle vehicle);
-
+     void delete(String id);
+     Vehicle[] create(Vehicle[] vehicle);
+     Vehicle[] update(Vehicle[] vehicle);
 }

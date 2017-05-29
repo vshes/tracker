@@ -1,12 +1,23 @@
 package io.shesh.tracker.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.sql.Date;
 
 /**
  * Created by shesh on 5/28/17.
  */
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Vehicle.findAll", query = "SELECT v from Vehicle v"),
+        @NamedQuery(name = "Vehicle.findById", query = "select v from Vehicle v where v.vin = :id"),
+        @NamedQuery(name = "Vehicle.deleteById",query = "delete from Vehicle v where v.vin = :id")
+})
 public class Vehicle {
 
+    @Id
     private String vin;
     private String model;
     private String make;

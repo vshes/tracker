@@ -1,10 +1,12 @@
 package io.shesh.tracker.model;
 
+import javax.persistence.Embeddable;
 import java.sql.Date;
 
 /**
  * Created by shesh on 5/28/17.
  */
+@Embeddable
 public class Tyres {
 
     private int frontLeft;

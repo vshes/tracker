@@ -1,5 +1,7 @@
 package io.shesh.tracker.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -7,8 +9,10 @@ import java.util.UUID;
 /**
  * Created by shesh on 5/28/17.
  */
+@Entity
 public class Alert {
 
+    @Id
     private String alertid;
     private String vid;
     private String alertmsg;
