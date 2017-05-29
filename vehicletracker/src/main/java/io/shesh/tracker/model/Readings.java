@@ -1,9 +1,6 @@
 package io.shesh.tracker.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -11,6 +8,11 @@ import java.util.UUID;
  * Created by shesh on 5/28/17.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name="Readings.findAll",query = "select r from Readings r"),
+        @NamedQuery(name="Reading.findByVid",query = "select r from Readings r where r.vin = :vid"),
+        @NamedQuery(name = "Readings.deleteByVid",query = "delete from Readings r where r.vin =:vid")
+})
 public class Readings {
 
     @Id

@@ -13,8 +13,6 @@ import java.util.List;
  * Created by shesh on 5/28/17.
  */
 @Repository
-
-
 public class VehicleDaoImpl implements VehicleDao {
 
     @PersistenceContext

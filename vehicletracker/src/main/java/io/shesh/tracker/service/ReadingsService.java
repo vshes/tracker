@@ -10,7 +10,7 @@ import java.util.List;
 public interface ReadingsService {
     Readings create(Readings readings);
     Readings update(Readings readings);
-    void delete(Readings readings);
-    List<Readings> findAll(String id);
+    void delete(String id);
     List<Readings> findReadingByVehicleId(String id);
+    List<Readings> findAll();
 }

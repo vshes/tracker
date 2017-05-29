@@ -9,8 +9,8 @@ import java.util.List;
 public interface ReadingsDao {
     Readings create(Readings readings);
     Readings update(Readings readings);
-    void delete(Readings readings);
-    List<Readings> findAll(String id);
+    void delete(String  vid);
+    List<Readings> findAll();
     List<Readings> findReadingByVehicleId(String id);
 
 }
