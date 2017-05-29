@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by shesh on 5/28/17.
  */
 @Embeddable
-public class Tyres {
+public class Tires {
 
     private int frontLeft;
     private int frontRight;

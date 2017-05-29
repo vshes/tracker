@@ -10,7 +10,7 @@ import java.util.UUID;
 @Entity
 @NamedQueries({
         @NamedQuery(name="Readings.findAll",query = "select r from Readings r"),
-        @NamedQuery(name="Reading.findByVid",query = "select r from Readings r where r.vin = :vid"),
+        @NamedQuery(name="Readings.findByVid",query = "select r from Readings r where r.vin = :vid"),
         @NamedQuery(name = "Readings.deleteByVid",query = "delete from Readings r where r.vin =:vid")
 })
 public class Readings {
@@ -29,7 +29,9 @@ public class Readings {
     boolean engineCoolantLow;
     boolean cruiseControlOn;
     private int engineRpm;
-    private Tyres tyres;
+
+
+    private Tires tires;
 
     public Readings() {
         this.rid = UUID.randomUUID().toString();
@@ -131,12 +133,12 @@ public class Readings {
         this.engineRpm = engineRpm;
     }
 
-    public Tyres getTyres() {
-        return tyres;
+    public Tires getTires() {
+        return tires;
     }
 
-    public void setTyres(Tyres tyres) {
-        this.tyres = tyres;
+    public void setTires(Tires tires) {
+        this.tires = tires;
     }
 
     @Override
@@ -154,7 +156,7 @@ public class Readings {
                 ", engineCoolantLow=" + engineCoolantLow +
                 ", cruiseControlOn=" + cruiseControlOn +
                 ", engineRpm=" + engineRpm +
-                ", tyres=" + tyres +
+                ", tyres=" + tires +
                 '}';
     }
 }

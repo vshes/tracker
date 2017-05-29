@@ -39,14 +39,14 @@ public class ReadingsDaoImpl implements ReadingsDao {
 
     @Override
     public List<Readings> findAll() {
-        Query query = entityManager.createNamedQuery("Readings.findByVid");
+        Query query = entityManager.createNamedQuery("Readings.findAll");
         return query.getResultList();
 
     }
 
     @Override
     public List<Readings> findReadingByVehicleId(String id) {
-        Query query = entityManager.createNamedQuery("Readings.findAll").setParameter("vid",id);
+        Query query = entityManager.createNamedQuery("Readings.findByVid").setParameter("vid",id);
         return query.getResultList();
 
 
