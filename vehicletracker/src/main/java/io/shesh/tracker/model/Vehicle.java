@@ -13,7 +13,9 @@ import java.sql.Date;
 @NamedQueries({
         @NamedQuery(name = "Vehicle.findAll", query = "SELECT v from Vehicle v"),
         @NamedQuery(name = "Vehicle.findById", query = "select v from Vehicle v where v.vin = :id"),
-        @NamedQuery(name = "Vehicle.deleteById",query = "delete from Vehicle v where v.vin = :id")
+        @NamedQuery(name = "Vehicle.deleteById",query = "delete from Vehicle v where v.vin = :id"),
+        @NamedQuery(name = "Vehicle.redLineRPM",query = "select v.redlineRpm from Vehicle v where v.vin = :id"),
+        @NamedQuery(name = "Vehicle.fuelVolume",query = "select  v.maxFuelVolume from Vehicle v where v.vin =:id")
 })
 public class Vehicle {
 
@@ -23,7 +25,7 @@ public class Vehicle {
     private String make;
     private int year;
     private int redlineRpm;
-    private int maxFuelVolume;
+    private float maxFuelVolume;
     private Date lastServiceDate;
 
     public String getVin() {
@@ -66,11 +68,11 @@ public class Vehicle {
         this.redlineRpm = redlineRpm;
     }
 
-    public int getMaxFuelVolume() {
+    public float getMaxFuelVolume() {
         return maxFuelVolume;
     }
 
-    public void setMaxFuelVolume(int maxFuelVolume) {
+    public void setMaxFuelVolume(float maxFuelVolume) {
         this.maxFuelVolume = maxFuelVolume;
     }
 

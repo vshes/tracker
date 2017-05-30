@@ -15,4 +15,6 @@ public interface VehicleDao {
      void delete(String id);
      Vehicle[] create(Vehicle[] vehicle);
      Vehicle[] update(Vehicle[] vehicle);
+     float findvehiceFuelVolume(String vin);
+     int findvehicleRedlineRpm(String vin);
 }

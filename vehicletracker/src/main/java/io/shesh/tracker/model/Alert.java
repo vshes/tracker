@@ -2,7 +2,9 @@ package io.shesh.tracker.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Time;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -10,29 +12,43 @@ import java.util.UUID;
  * Created by shesh on 5/28/17.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Alert.findByVin",query = "select a from Alert a where a.vin = :vin"),
+        @NamedQuery(name = "Alert.deleteByVin",query = "delete from Alert a where a.vin = :vin"),
+        @NamedQuery(name = "Alert.findAll",query = "select a from Alert a")
+})
 public class Alert {
 
     @Id
     private String alertid;
-    private String vid;
+    private String vin;
     private String alertmsg;
-    private Timestamp timestamp;
+    private Date timestamp;
+    private String priority;
 
-    public String getAlertid() {
-        return alertid;
+
+
+    public String getPriority() {
+        return priority;
     }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+
 
     public void setAlertid(String alertid) {
         this.alertid = alertid;
     }
 
-    public String getVid() {
-        return vid;
-    }
-
-    public void setVid(String vid) {
-        this.vid = vid;
-    }
 
     public String getAlertmsg() {
         return alertmsg;
@@ -42,15 +58,16 @@ public class Alert {
         this.alertmsg = alertmsg;
     }
 
-    public Timestamp getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
     public Alert() {
+
         this.alertid = UUID.randomUUID().toString();
     }
 
@@ -58,9 +75,10 @@ public class Alert {
     public String toString() {
         return "Alert{" +
                 "alertid='" + alertid + '\'' +
-                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
                 ", alertmsg='" + alertmsg + '\'' +
                 ", timestamp=" + timestamp +
+                ", priority='" + priority + '\'' +
                 '}';
     }
 }

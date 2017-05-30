@@ -20,7 +20,6 @@ public class Readings {
     private String vin;
     private double latitude;
     private double longitude;
-
     private Timestamp timestamp;
     private float fuelVolume;
     private float  speed;

@@ -11,6 +11,6 @@ public interface AlertDao {
      List<Alert> findAllByVehicle(String id);
      void delete(Alert alert);
      void update(Alert alert);
-     void findById(Alert alert);
+     List<Alert> findAll();
 
 }

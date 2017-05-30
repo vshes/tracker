@@ -1,7 +1,8 @@
 package io.shesh.tracker.controller;
 
 import io.shesh.tracker.model.Readings;
-import io.shesh.tracker.model.Vehicle;
+import io.shesh.tracker.model.Alert;
+import io.shesh.tracker.service.AlertService;
 import io.shesh.tracker.service.ReadingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,6 +19,11 @@ public class ReadingsController {
     @Autowired
     ReadingsService readingsService;
 
+    @Autowired
+    AlertService alertService;
+
+
+
     @RequestMapping(method = RequestMethod.GET,value = "readings")
     List<Readings> findAllReadings(){
         return readingsService.findAll();
@@ -32,8 +38,9 @@ public class ReadingsController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    Readings create(@RequestBody Readings readings){
-        return readingsService.create(readings);
+    List<Alert> create(@RequestBody Readings readings){
+        readingsService.create(readings);
+        return alertService.createAlertsForReading(readings);
     }
 
     @RequestMapping(value = "readings",method = RequestMethod.PUT,

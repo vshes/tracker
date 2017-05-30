@@ -63,4 +63,16 @@ public class VehicleDaoImpl implements VehicleDao {
         Query query = entityManager.createNamedQuery("Vehicle.deleteById").setParameter("id",id);
         query.executeUpdate();
     }
+
+    @Override
+    public float findvehiceFuelVolume(String id) {
+        Query query = entityManager.createNamedQuery("Vehicle.redLineRPM").setParameter("vin",id);
+        return query.executeUpdate();
+    }
+
+    @Override
+    public int findvehicleRedlineRpm(String id) {
+        Query query = entityManager.createNamedQuery("Vehicle.fuelVolume").setParameter("vin",id);
+        return query.executeUpdate();
+    }
 }
