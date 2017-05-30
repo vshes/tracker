@@ -32,6 +32,7 @@ public class AlertDaoImpl implements AlertDao{
     }
 
     @Override
+
     public void delete(Alert alert) {
 
     }

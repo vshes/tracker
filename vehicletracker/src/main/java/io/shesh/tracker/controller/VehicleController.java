@@ -1,12 +1,12 @@
 package io.shesh.tracker.controller;
 
+import io.shesh.tracker.exception.ResourceNotFoundException;
 import io.shesh.tracker.model.Vehicle;
 import io.shesh.tracker.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 /**
  * Created by shesh on 5/28/17.
@@ -22,10 +22,17 @@ public class VehicleController {
     List<Vehicle>  findAllVehicle(){
         return vehicleService.findAll();
     }
+
     @RequestMapping(method = RequestMethod.GET,value = "vehicle/{id}")
     Vehicle  findVehicleById(@PathVariable("id") String id){
-        System.out.println("ID IS"+id);
-        return vehicleService.findById(id);
+       Vehicle vehicle =vehicleService.findById(id);
+       if(vehicle == null){
+           throw new ResourceNotFoundException("Vehicle Not Fpund");
+       }
+       else{
+           return vehicle;
+       }
+
     }
 
     @RequestMapping(value = "vehicle",method = RequestMethod.POST,

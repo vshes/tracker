@@ -1,11 +1,9 @@
 package io.shesh.tracker;
 
-import io.shesh.tracker.utils.PropUtil;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import javax.persistence.EntityManagerFactory;
 
@@ -30,17 +28,14 @@ import java.util.Properties;
 
 public class JPAConfig {
 
-
+    @Autowired
+    private Environment environment;
     private Environment jpaenvironment;
 
     @Autowired
     public void setJpaenvironment(Environment jpaenv) {
         this.jpaenvironment = jpaenv;
     }
-
-    @Autowired
-    private Environment environment;
-
 
     @Bean
     public DataSource dataSource() {
@@ -70,11 +65,9 @@ public class JPAConfig {
 
     Properties getJpaProperties(){
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
-        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.dialect", jpaenvironment.getProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", jpaenvironment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", jpaenvironment.getProperty("hibernate.hbm2ddl.auto"));
-
-
         return properties;
 
     }

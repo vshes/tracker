@@ -6,6 +6,8 @@ import io.shesh.tracker.model.Alert;
 import io.shesh.tracker.model.Readings;
 import io.shesh.tracker.service.AlertService;
 import io.shesh.tracker.utils.AlertMsgType;
+import io.shesh.tracker.utils.JavaMailerService;
+import io.shesh.tracker.utils.MailerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +28,14 @@ public class AlertServiceImpl implements AlertService{
     @Autowired
     VehicleDao vehicleDao;
 
+    @Autowired
+    private JavaMailerService javaMailerService;
+
     public Alert create(Alert alert) {
         return null;
     }
+
+
 
     @Override
     public List<Alert> findAllByVehicle(String id) {
@@ -74,6 +81,7 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+           //javaMailerService.send(alert);
             System.out.println(alert.toString());
         }
         if(readings.isEngineCoolantLow()){
@@ -84,6 +92,7 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+          //  javaMailerService.send(alert);
             System.out.println(alert.toString());
         }
         if((readings.getTires().getFrontLeft() < 32 ) || (readings.getTires().getFrontLeft() > 36)){
@@ -94,6 +103,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+            javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
         if((readings.getTires().getFrontRight() < 32 ) || (readings.getTires().getFrontRight() > 36)){
@@ -104,6 +115,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+            javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
         if((readings.getTires().getRearLeft() < 32 ) || (readings.getTires().getRearLeft() > 36)){
@@ -114,6 +127,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+            javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
         if((readings.getTires().getRearRight() < 32 ) || (readings.getTires().getRearRight() > 36)){
@@ -124,6 +139,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+        //    javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
         if((readings.getEngineRpm() > vehicleDao.findById(readings.getVin()).getRedlineRpm())){
@@ -134,6 +151,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+       //     javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
 
@@ -145,6 +164,8 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
+           // javaMailerService.send(alert);
+            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
        return alerts;

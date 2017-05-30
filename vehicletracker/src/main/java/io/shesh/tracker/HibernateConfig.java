@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 public class HibernateConfig {
 
     @Autowired
-    Environment jpaenv;
+    private Environment jpaenv;
+
 
 }
