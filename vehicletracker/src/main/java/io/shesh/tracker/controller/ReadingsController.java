@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by shesh on 5/28/17.
  */
+@CrossOrigin(origins = "http://mocker.egen.io", maxAge = 3600)
 @RestController
 public class ReadingsController {
 
