@@ -14,23 +14,23 @@ import java.util.List;
  * Created by shesh on 5/28/17.
  */
 @RestController
-@CrossOrigin(origins = "http://mocker.egen.io", maxAge = 3600)
+@CrossOrigin(origins = {"http://mocker.egen.io",
+        "http://localhost:8080/"}, maxAge = 3600)
 public class ReadingsController {
 
     @Autowired
-    ReadingsService readingsService;
+    private ReadingsService readingsService;
 
     @Autowired
-    AlertService alertService;
-
-
+    private AlertService alertService;
 
     @RequestMapping(method = RequestMethod.GET,value = "readings")
-    List<Readings> findAllReadings(){
+    public List<Readings> findAllReadings(){
         return readingsService.findAll();
     }
+
     @RequestMapping(method = RequestMethod.GET,value = "readings/{vid}")
-    List<Readings> findReadingsByVehicleId(@PathVariable("vid") String id){
+    public List<Readings> findReadingsByVehicleId(@PathVariable("vid") String id){
         System.out.println("ID IS"+id);
         return readingsService.findReadingByVehicleId(id);
     }
@@ -39,7 +39,7 @@ public class ReadingsController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    List<Alert> create(@RequestBody Readings readings){
+    public List<Alert> create(@RequestBody Readings readings){
         readingsService.create(readings);
         return alertService.createAlertsForReading(readings);
     }
@@ -48,12 +48,12 @@ public class ReadingsController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    Readings update(@RequestBody Readings readings){
+    public Readings update(@RequestBody Readings readings){
         return   readingsService.update(readings);
     }
 
     @RequestMapping(value = "reading/{vid}",method = RequestMethod.DELETE)
-    void update(@PathVariable("vid") String  id){
+    public void update(@PathVariable("vid") String  id){
         readingsService.delete(id);
     }
 

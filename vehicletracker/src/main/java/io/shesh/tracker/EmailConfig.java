@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import java.util.Properties;
 
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -33,6 +34,11 @@ public class EmailConfig {
         mailSender.setUsername(environment.getProperty("email.username"));
         mailSender.setPassword(environment.getProperty("email.password"));
         mailSender.setPort(Integer.parseInt(environment.getProperty("email.port")));
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "false");
         return mailSender;
     }
 

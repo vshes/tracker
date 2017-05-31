@@ -1,4 +1,4 @@
-package io.shesh.tracker.service.serviceImpl;
+package io.shesh.tracker.service.Impl;
 
 import io.shesh.tracker.dao.AlertDao;
 import io.shesh.tracker.dao.VehicleDao;
@@ -7,7 +7,6 @@ import io.shesh.tracker.model.Readings;
 import io.shesh.tracker.service.AlertService;
 import io.shesh.tracker.utils.AlertMsgType;
 import io.shesh.tracker.utils.JavaMailerService;
-import io.shesh.tracker.utils.MailerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class AlertServiceImpl implements AlertService{
     private AlertDao alertDao;
 
     @Autowired
-    VehicleDao vehicleDao;
+    private VehicleDao vehicleDao;
 
     @Autowired
     private JavaMailerService javaMailerService;
@@ -61,7 +60,10 @@ public class AlertServiceImpl implements AlertService{
     @Transactional
     public List<Alert> createAlertsForReading(Readings readings) {
 
-        return createAlerts(readings);
+        List<Alert> alerts = createAlerts(readings);
+        javaMailerService.send(alerts,readings.getVin());
+        return alerts;
+
     }
 
     @Override
@@ -70,8 +72,9 @@ public class AlertServiceImpl implements AlertService{
     }
 
 
+    @Transactional
     private List<Alert> createAlerts(Readings readings){
-        List<Alert> alerts = new ArrayList<Alert>();
+        List<Alert> alerts = new ArrayList<>();
 
         if(readings.isCheckEngineLightOn()){
             Alert alert = new Alert();
@@ -81,7 +84,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-           //javaMailerService.send(alert);
             System.out.println(alert.toString());
         }
         if(readings.isEngineCoolantLow()){
@@ -92,7 +94,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-          //  javaMailerService.send(alert);
             System.out.println(alert.toString());
         }
         if((readings.getTires().getFrontLeft() < 32 ) || (readings.getTires().getFrontLeft() > 36)){
@@ -103,7 +104,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-            javaMailerService.send(alert);
             System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
@@ -115,7 +115,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-            javaMailerService.send(alert);
             System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
@@ -127,7 +126,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-            javaMailerService.send(alert);
             System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
@@ -139,8 +137,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-        //    javaMailerService.send(alert);
-            System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
         if((readings.getEngineRpm() > vehicleDao.findById(readings.getVin()).getRedlineRpm())){
@@ -151,7 +147,6 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-       //     javaMailerService.send(alert);
             System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
@@ -164,11 +159,11 @@ public class AlertServiceImpl implements AlertService{
             alert.setTimestamp(new Date(System.currentTimeMillis()));
             alertDao.create(alert);
             alerts.add(alert);
-           // javaMailerService.send(alert);
             System.out.println("Alert Mail sent !");
             System.out.println(alert.toString());
         }
-       return alerts;
+
+        return alerts;
     }
 
 

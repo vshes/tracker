@@ -1,4 +1,4 @@
-package io.shesh.tracker.service.serviceImpl;
+package io.shesh.tracker.service.Impl;
 
 import io.shesh.tracker.dao.ReadingsDao;
 import io.shesh.tracker.model.Readings;
