@@ -1,0 +1,6 @@
+.section{
+    display: none;
+    min-height: 70%;
+    max-height: 80%;
+    background: lightgrey;
+}
