@@ -23,10 +23,26 @@ public class Alert {
     private String alertid;
     private String vin;
     private String alertmsg;
-    private Date timestamp;
+    private double latitude;
+    private double longitude;
+    private Timestamp timestamp;
     private String priority;
 
+    public double getLatitude() {
+        return latitude;
+    }
 
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public String getPriority() {
         return priority;
@@ -58,11 +74,15 @@ public class Alert {
         this.alertmsg = alertmsg;
     }
 
-    public Date getTimestamp() {
+    public String getAlertid() {
+        return alertid;
+    }
+
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 

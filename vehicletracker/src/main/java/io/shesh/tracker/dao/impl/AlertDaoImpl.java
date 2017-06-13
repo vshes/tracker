@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -25,22 +26,18 @@ public class AlertDaoImpl implements AlertDao{
 
     @Override
     public List<Alert> findAllByVehicle(String id) {
-
-       return entityManager.createNamedQuery("Alert.findByVin").getResultList();
-
+        Query query = entityManager.createNamedQuery("Alert.findByVin").setParameter("vin",id);
+        return query.getResultList();
 
     }
 
     @Override
-
     public void delete(Alert alert) {
 
     }
 
     @Override
     public void update(Alert alert) {
-
-
     }
 
     @Override

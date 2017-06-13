@@ -13,6 +13,8 @@ import java.util.List;
  * Created by shesh on 5/28/17.
  */
 @RestController
+@CrossOrigin(origins = {"http://localhost:63342","http://mocker.egen.io"},maxAge = 3600)
+
 public class AlertController {
 
     @Autowired
@@ -23,10 +25,10 @@ public class AlertController {
         return alertService.findAllByVehicle(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "alerts/{aid}")
-    Alert findAll(@PathVariable("aid") String id){
-        return alertService.findById(id);
-    }
+//    @RequestMapping(method = RequestMethod.GET,value = "alerts/{aid}")
+//    Alert findAll(@PathVariable("aid") String id){
+//        return alertService.findById(id);
+//    }
 
     @RequestMapping(method = RequestMethod.GET,value = "alerts")
     List<Alert> findAll(){
