@@ -1,0 +1,20 @@
+
+    <br>
+    <input ng-model="vehicleSearch" class="form-control bg-primary" placeholder="Search vehicle details..."></lebel>
+    <table class="table table-striped ">
+        <thead>
+        <tr>
+            <th>Vin</th>
+            <th>Model</th>
+            <th>Make</th>
+            <th>year</th>
+        </tr>
+        </thead>
+    <tr ng-repeat="vehicle in vehicleVm.vehicles | filter:vehicleSearch">
+        <td><a ng-href="#!/vehicle/{{vehicle.vin}}">{{vehicle.vin}}</a></td>
+        <td>{{vehicle.model}}</td>
+        <td>{{vehicle.make}}</td>
+        <td>{{vehicle.year}}</td>
+    </tr>
+    </table>
+
