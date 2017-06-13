@@ -1,0 +1,24 @@
+
+<table class="table table-striped ">
+    <thead>
+    <tr>
+        <th>Vin</th>
+        <th>Model</th>
+        <th>Make</th>
+        <th>year</th>
+        <th>Red Line RPM</th>
+        <th>Max Fuel Volume</th>
+        <th>Last Service Date</th>
+    </tr>
+    </thead>
+    <tr ng-model="vehicleDetVm.vehicle">
+        <td><a ng-href="#!/alerts/{{vehicleDetVm.vehicle.vin}}">{{vehicleDetVm.vehicle.vin}}</a></td>
+        <td>{{vehicleDetVm.vehicle.model}}</td>
+        <td>{{vehicleDetVm.vehicle.make}}</td>
+        <td>{{vehicleDetVm.vehicle.year}}</td>
+        <td>{{vehicleDetVm.vehicle.redlineRpm}}</td>
+        <td>{{vehicleDetVm.vehicle.maxFuelVolume}}</td>
+        <td>{{vehicleDetVm.vehicle.lastServiceDate}}</td>
+    </tr>
+</table>
+
