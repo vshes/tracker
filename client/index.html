@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+    <meta charset="UTF-8">
+    <!--bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--endinject-->
+
+    <!--inject:css -->
+    <link rel="stylesheet" href="styles/alert.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/readings.css">
+    <link rel="stylesheet" href="styles/vehicle.css">
+    <!--endinject-->
+    <title>Demo</title>
+</head>
+<body ng-app="app" class="container" >
+
+<header class="container">
+    <table><tr>
+        <td><img src="images/ferrari1.jpeg" class="img-rounded" width="110px" height="80px"></td>
+        <td><img src="images/ferrari2.png" class="img-rounded " width="120px" height="80px"></td>
+        <td><img src="images/merc.png" class="img-rounded " width="120px" height="80px"></td>
+        <td><img src="images/rr.jpeg" class="img-rounded " width="120px" height="80px"></td>
+        <td><img src="images/lambo.jpeg" class="img-rounded " width="110px" height="80px"></td>
+    </tr></table>
+</header>
+<br>
+
+<ul class="nav nav-pills  navbar-inverse">
+    <li class="nav-item bg-danger">
+        <a class="nav-link" href="#!home">Home</a>
+    </li>
+    <li class="nav-item bg-danger">
+        <a class="nav-link active" href="#!vehicles">Vehicle</a>
+    </li>
+    <li class="nav-item bg-danger">
+        <a class="nav-link" href="#!alerts">Alerts</a>
+    </li>
+</ul>
+
+
+
+<!--bower:js -->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/ngmap/build/scripts/ng-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAEg5-KmpXA06XscGZyZs6wdh-QvIuJbWM"></script>
+<!--endinject-->
+
+<!--inject:js -->
+
+<script src="app/app.js"></script>
+
+<script src="app/services/vehicle.service.js"></script>
+
+<script src="app/services/map.service.js"></script>
+
+<script src="app/services/reading.service.js"></script>
+
+<script src="app/services/alert.service.js"></script>
+
+<script src="app/controller/vehicle.detail.controller.js"></script>
+
+<script src="app/controller/vehicle.controller.js"></script>
+
+<script src="app/controller/readings.controller.js"></script>
+
+<script src="app/controller/alert.map.controller.js"></script>
+
+<script src="app/controller/alert.controller.js"></script>
+
+<script src="app/controller/vehicle.alert.controller.js"></script>
+
+<script src="app/controller/alert.controller.byVid.js"></script>
+
+<script src="app/app.constant.js"></script>
+
+<!--endinject-->
+<section id="section">
+    <div ng-view> </div>
+</section>
+<footer id="footer">
+    <div>
+        <p  align="centre" class="text-success"> &copy; Auto Tracker - Demo Project </p>
+    </div>
+</footer>
+</body>
+</html>
