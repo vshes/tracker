@@ -1,0 +1,8 @@
+<br>
+<button ng-click = "vehicleAttVm.toggleMap()" class="btn btn-inverse text-info" > Display Alerts </button>
+<br>
+<div ng-show="vehicleAttVm.mapFlag"><br>
+ <ng-map center="[40.71,-74.18]" zoom="3">
+        <marker animation="Animation.BOUNCE"  ng-repeat="pos in vehicleAttVm.locations" position="{{pos}}" ></marker>
+ </ng-map>
+</div>
