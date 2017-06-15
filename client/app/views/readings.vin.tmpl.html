@@ -11,8 +11,8 @@
         <th>Engine - RPM</th>
     </tr>
     </thead>
-    <tr ng-repeat="reading in readingVm.readings | filter:readingSearch">
-        <td><a ng-href="#!/readings/{{reading.vin}}">{{reading.vin}}</a></td>
+    <tr ng-repeat="reading in readingVinVm.readingsVin | filter:readingSearch">
+        <td>{{reading.vin}}</td>
         <td>{{reading.fuelVolume}}</td>
         <td>{{reading.speed}}</td>
         <td>{{reading.engineHp}}</td>

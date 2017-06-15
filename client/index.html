@@ -18,28 +18,27 @@
     <!--endinject-->
     <title>Demo</title>
 </head>
-<body ng-app="app" class="container" >
-
 <header class="container">
-    <table><tr>
-        <td><img src="images/ferrari1.jpeg" class="img-rounded" width="110px" height="80px"></td>
-        <td><img src="images/ferrari2.png" class="img-rounded " width="120px" height="80px"></td>
-        <td><img src="images/merc.png" class="img-rounded " width="120px" height="80px"></td>
-        <td><img src="images/rr.jpeg" class="img-rounded " width="120px" height="80px"></td>
-        <td><img src="images/lambo.jpeg" class="img-rounded " width="110px" height="80px"></td>
+    <table ><tr>
+        <td align="left"><img src="images/angred.png" class="img-rounded " width="200px" height="100px"></td>
+        <td class="text-center text-danger  glyphicon"> <h3>AUTO TRACKER</h3></td>
     </tr></table>
 </header>
+<body ng-app="app" class="container" >
 <br>
 
 <ul class="nav nav-pills  navbar-inverse">
     <li class="nav-item bg-danger">
-        <a class="nav-link" href="#!home">Home</a>
+        <a class="nav-link active" href="#!home">Home</a>
     </li>
     <li class="nav-item bg-danger">
-        <a class="nav-link active" href="#!vehicles">Vehicle</a>
+        <a class="nav-link" href="#!vehicles">Vehicle</a>
     </li>
     <li class="nav-item bg-danger">
         <a class="nav-link" href="#!alerts">Alerts</a>
+    </li>
+    <li class="nav-item bg-danger">
+        <a class="nav-link" href="#!readings">Readings</a>
     </li>
 </ul>
 
@@ -51,8 +50,8 @@
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/ngmap/build/scripts/ng-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAEg5-KmpXA06XscGZyZs6wdh-QvIuJbWM"></script>
 <!--endinject-->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAEg5-KmpXA06XscGZyZs6wdh-QvIuJbWM"></script>
 
 <!--inject:js -->
 
@@ -66,30 +65,37 @@
 
 <script src="app/services/alert.service.js"></script>
 
+<script src="app/controller/home.controller.js"></script>
+
 <script src="app/controller/vehicle.detail.controller.js"></script>
 
 <script src="app/controller/vehicle.controller.js"></script>
 
 <script src="app/controller/readings.controller.js"></script>
 
+<script src="app/controller/readings.controller.vin.js"></script>
+
 <script src="app/controller/alert.map.controller.js"></script>
 
 <script src="app/controller/alert.controller.js"></script>
 
-<script src="app/controller/vehicle.alert.controller.js"></script>
+<script src="app/controller/vehicle.attributes.controller.js"></script>
 
-<script src="app/controller/alert.controller.byVid.js"></script>
+<script src="app/controller/alert.controller.vin.js"></script>
 
 <script src="app/app.constant.js"></script>
 
 <!--endinject-->
-<section id="section">
-    <div ng-view> </div>
+
+<section id="section" >
+    <div ng-view > </div>
+
+    <img src="images/car1.jpeg" width="100%" height="100%" >
+
 </section>
-<footer id="footer">
-    <div>
-        <p  align="centre" class="text-success"> &copy; Auto Tracker - Demo Project </p>
-    </div>
-</footer>
+
 </body>
+<footer class="navbar-inverse" >
+        <h4 align="center" class="text-danger"> &copy; Auto Tracker - Demo Project </h4>
+</footer>
 </html>

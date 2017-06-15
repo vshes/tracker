@@ -6,3 +6,36 @@
         <marker animation="Animation.BOUNCE"  ng-repeat="pos in vehicleAttVm.locations" position="{{pos}}" ></marker>
  </ng-map>
 </div>
+<br>
+<a class="btn btn-success" href ="#!/vehicle/reading/{{vehicleAttVm.vin}}" ng-click="vehicleAttVm.toggleReading()"> Readings  </a>
+<br>
+<div ng-show="vehicleAttVm.readingFlag" >
+    <br>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr class=" text-center text-primary ">
+            <th>Vin</th>
+            <th>Fuel Volume</th>
+            <th>Speed</th>
+            <th>Engine - HP</th>
+            <th>Engine - RPM</th>
+            <th>Engine light Flag</th>
+            <th>Coolant Low flag</th>
+            <th>Cruise ON / OFF</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="reading in vehicleAttVm.readings " class="text-center">
+            <td>{{reading.vin}}</td>
+            <td>{{reading.fuelVolume}}</td>
+            <td>{{reading.speed}}</td>
+            <td>{{reading.engineHp}}</td>
+            <td>{{reading.engineRpm}}</td>
+            <td class="text-info">{{reading.checkEngineLightOn}}</td>
+            <td class="text-danger">{{reading.engineCoolantLow}}</td>
+            <td class="text-success">{{reading.cruiseControlOn}}</td>
+            <td>{{reading.timestamp | date:"MM/dd/yyyy 'at' h:mma"}}  </td>
+        </tr>
+    </table>
+    <br>
+</div>
