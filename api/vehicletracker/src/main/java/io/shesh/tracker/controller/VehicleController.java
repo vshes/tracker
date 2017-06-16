@@ -12,7 +12,7 @@ import java.util.List;
  * Created by shesh on 5/28/17.
  */
 @RestController
-@CrossOrigin(origins = {"http://localhost:63342","http://mocker.egen.io"},maxAge = 3600)
+@CrossOrigin(origins = {"http://localhost:63342","http://localhost:3000","http://mocker.egen.io"},maxAge = 3600)
 public class VehicleController {
 
     @Autowired
