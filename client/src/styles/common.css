@@ -4,3 +4,13 @@
     max-height: 80%;
     background: lightgrey;
 }
+#slides_control > div{
+    height: 200px;
+}
+#slides_control {
+    position:absolute;
+    width: 400px;
+    left:50%;
+    top:20px;
+    margin-left:-200px;
+}

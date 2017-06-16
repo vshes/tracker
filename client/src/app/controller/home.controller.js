@@ -6,8 +6,8 @@
     homeControllerFn.$inject =['$route','$rootScope'];
     function homeControllerFn($route,$rootScope) {
 
+        var homeVm  = this;
+        homeVm.flag = true;
     }
-
-
 
 })();

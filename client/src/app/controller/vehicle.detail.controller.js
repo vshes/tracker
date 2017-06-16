@@ -11,10 +11,8 @@
             .then(function(vehicle){
                 console.log("DETAILED REPORT Of VEHICLE");
                 vehicleDetVM.vehicle = vehicle;
-                console.log(vehicle);
             },function(error){
                 console.log(error);
             });
-
     }
 })();
