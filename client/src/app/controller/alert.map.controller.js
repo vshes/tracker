@@ -3,40 +3,31 @@
     angular.module('app')
         .controller('alertMapController',alertMapControllerFn);
 
-    alertMapControllerFn.$inject = ['alertService','$routeParams','$http','NgMap','CONFIG'];
+    alertMapControllerFn.$inject = ['mapService','alertService','$routeParams'];
 
 
-    function alertMapControllerFn(alertService,$routeParams,$http,NgMap,CONFIG) {
-        console.log("ID IS:"+$routeParams.id);
+    function alertMapControllerFn(mapService,alertService,$routeParams,$http,NgMap,CONFIG) {
         var alertMapVm = this;
-         getCMap($routeParams.id);
+        var alertHandle = alertService.getAid($routeParams.aid);
+        var mapHandle =  mapService.getMap();
 
-        function getCMap(aid) {
+        mapHandle.then(function (map) {
+            alertMapVm.map = map;
+        });
 
-            NgMap.getMap().then(function (map) {
-                $http.get(CONFIG.API_ALERT)
-                    .then(function (response) {
-                        for (var i = 0; i < response.data.length; i++) {
-                            console.log(response.data.length);
-                            var lat = response.data[i].latitude;
-                            var long = response.data[i].longitude;
-                            var alertid = response.data[i].alertid;
-                            var msg = response.data[i].alertmsg;
-                            if (alertid == aid) {
-                                console.log(lat + "\t" + long + "\t" + alertid);
-                                alertMapVm.latitude = lat;
-                                alertMapVm.longitude = long;
-                                alertMapVm.alertmsg = msg;
-                                return response.data[i];
-                            }
+        alertHandle.then(function (response) {
+                for( var i =0 ;i<response.data.length;i++){
+                    var lat = response.data[i].latitude;
+                    var long = response.data[i].longitude;
+                    var alertid = response.data[i].alertid;
+                    var vin = response.data[i].vin;
+                    if(alertid == aid){
+                        alertMapVm.latitude =lat;
+                        alertMapVm.longitude =long;
+                        alertMapVm.vin =  vin;
+                    }
 
-                        }
-
-                    }, function (error) {
-                        console.log(error);
-                    });
-
-            });
-        }
+                }
+        });
     }
 })();
