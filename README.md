@@ -11,3 +11,15 @@ seed for the Full-Stack IOT training project: car-tracker
 
 ## requirements:
 [https://learn.egen.io](https://learn.egen.io/courses/overview.html)
+
+## swagger:
+[http://hostname:port/tracker/api/swagger-ui.html](http://localhost:8080/tracker/api/swagger-ui.html)
+
+## API:
+[http://hostname:port/tracker/api/vehicles](http://localhost:8080/tracker/api/vehicles)
+
+[http://hostname:port/tracker/api/alerts](http://localhost:8080/tracker/api/alerts)
+
+[http://hostname:port/tracker/api/readings](http://localhost:8080/tracker/api/readings)
+
+
